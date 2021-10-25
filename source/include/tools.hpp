@@ -1,0 +1,5 @@
+#include "tools/get_performance.hpp"
+#include "tools/load_file.hpp"
+#include "tools/rotate_image.hpp"
+#include "tools/run_analysis.hpp"
+#include "tools/set_analysis_size.hpp"
