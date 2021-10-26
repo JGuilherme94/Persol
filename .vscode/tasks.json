@@ -7,7 +7,7 @@
 			"command": ".\\build.bat",
 			"args": [
 				"-Wall -Wextra -g",
-				".\\source\\temp\\Persol\\*.cpp",
+				".\\source\\*.cpp",
 				"Persol.exe",
 				".\\thirdparty\\include",
 				".\\thirdparty\\lib",

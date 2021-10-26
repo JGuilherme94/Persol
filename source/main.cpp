@@ -29,9 +29,10 @@
 
 using namespace std;
 
-main_window* _main_window;
-load_button* _main_window_load_button;
-image_display* _main_window_image_display;
+main_window*    _main_window;
+load_button*    _main_window_load_button;
+run_button*     _main_window_run_button;
+image_display*  _main_window_image_display;
 int phase = 0;
 
 int main(int argc, char** argv)
@@ -42,8 +43,9 @@ int main(int argc, char** argv)
   {
     g_print("PHASE: %i\n", phase);
     _main_window = new main_window(argv[0]);
-    _main_window_load_button = new load_button("Load", _main_window->get_widget_pointer_reference());
-    _main_window_image_display = new image_display("resources\\cnh_for_analysis.JPG", _main_window->get_widget_pointer_reference());
+    _main_window_image_display = new image_display("resources\\cnh_for_analysis.JPG", _main_window->get_window_image_display_box());
+    _main_window_load_button = new load_button("Load", _main_window->get_windows_tools_box());
+    _main_window_run_button = new run_button("Run", _main_window->get_windows_tools_box());
     gtk_main();
     phase++;
   } while (argv[argc] != "exit");

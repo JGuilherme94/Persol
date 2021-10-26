@@ -5,8 +5,16 @@ main_window::main_window(gchar* title)
     _window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(_window), title);
     gtk_window_set_default_size(GTK_WINDOW(_window), 550, 550);
-    _window_childs_pack = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_add(GTK_WINDOW(_window), _window_childs_pack);
+    _window_vertical_box = gtk_vbox_new(FALSE, 5);
+    _window_horizontal_box = gtk_hbox_new(FALSE, 5);
+    _window_vertical_tools_box = gtk_vbox_new(FALSE, 0);
+    //gtk_container_add(GTK_CONTAINER(_window_vertical_box), _window_horizontal_box);
+    //gtk_container_add(GTK_CONTAINER(_window_horizontal_box), _window_vertical_tools_box);
+    gtk_container_add(GTK_CONTAINER(_window), _window_vertical_box);
+    gtk_box_pack_start(GTK_BOX(_window_vertical_box), _window_horizontal_box, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(_window_horizontal_box), _window_image_display_box, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(_window_horizontal_box), _window_vertical_tools_box, TRUE, TRUE, 0);
+    //gtk_container_add(GTK_WINDOW(_window), _window_childs_pack);
     gtk_widget_show_all(_window);
 }
 
@@ -14,12 +22,26 @@ main_window::~main_window()
 {
 }
 
-GtkWidget* main_window::get_widget_pointer_reference()
+GtkWidget* main_window::get_windows_vertical_box()
 {
-    return _window_childs_pack;
+    return _window_vertical_box;
 }
 
+GtkWidget* main_window::get_windows_horizontal_box()
+{
+    return _window_horizontal_box;
+}
 
+GtkWidget* main_window::get_window_image_display_box()
+{
+    return _window_image_display_box;
+}
+
+GtkWidget* main_window::get_windows_tools_box()
+{
+    return _window_vertical_tools_box;
+}
+/*
 GtkWidget* main_window::find_child_by_name(GtkWidget* parent, const gchar* name)
 {
     if (g_strcmp0(gtk_widget_get_name(parent), name) == 0)
@@ -84,4 +106,4 @@ GtkWidget* main_window::find_child_by_index(GtkWidget* parent, int depth, ...)
 
     va_end(argp);
     return parent;
-}
+}*/

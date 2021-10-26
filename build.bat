@@ -48,18 +48,18 @@ goto :EndOfFile
 
 :Execute
 cd ./build
-tasklist | find /I "Persol.exe" 
+tasklist | find /I %3 
 if errorlevel 1 (
-        start Persol.exe -help
+        start %3 -help
 ) Else (
-        taskkill /f /t /im Persol.exe
+        taskkill /f /t /im %3
 )
 goto :Exit
 
 :EndOfFile
 rem check if program as been compiled for run the compiled program
-if not exist "./build/Persol.exe" echo ./build/Persol.exe not generated
-if exist "./build/Persol.exe" goto :Execute
+if not exist %7/%3 echo %7/%3 not generated
+if exist %7/%3 goto :Execute
 goto :Exit
 
 :Exit
